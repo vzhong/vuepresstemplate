@@ -20,3 +20,20 @@
       .container
         p Made by {{$site.themeConfig.author}}, {{(new Date()).getFullYear()}}.
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+      }
+    },
+    watch: {
+    },
+    computed: {
+    },
+    methods: {
+    }
+  }
+</script>
+<style scoped>
+</style>
