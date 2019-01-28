@@ -1,5 +1,10 @@
 module.exports = {
-  title: 'My title',
+  title: 'ShARC Analysis',
+  head: [
+    ['link', {rel: 'stylesheet', href: '//cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css'}],
+    ['script', {src: 'https://unpkg.com/marked@0.3.6'}],
+    ['script', {src: 'https://unpkg.com/lodash@4.16.0'}],
+  ],
   ga: '',
   themeConfig: {
     author: 'Victor Zhong',
