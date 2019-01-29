@@ -15,12 +15,14 @@
         a.button.is-static Per page
       p.control
         input.input(type='number', v-model='perPage')
+    section
+      Example(v-for='ex in batch', v-bind:ex='ex', v-bind:allTags='allTags')
 </template>
 
 
 <script>
 export default {
-  props: ['total', 'defaultPerPage'],
+  props: ['data', 'allTags', 'defaultPerPage'],
   data() {
     return {
       currPage: 0,
@@ -34,9 +36,18 @@ export default {
     currPage() {this.retrieve()}
   },
   computed: {
-    start() {return Math.min(this.total-1, this.currPage * this.perPage)},
+    total() {return this.data.length},
+    start() {return Math.max(0, Math.min(this.total-1, this.currPage * this.perPage))},
     end() {return Math.min(this.total, this.start + this.perPage)},
-    totalPage() {return Math.ceil(this.total / this.perPage)}
+    totalPage() {return Math.ceil(this.total / this.perPage)},
+    batch() {
+      var chunk = []
+      var vm = this
+      for (var i=vm.start; i<vm.end; i++) {
+        chunk.push(vm.data[i])
+      }
+      return chunk
+    }
   },
   methods: {
     retrieve() {this.$emit('retrieve', {start: this.start, end: this.end})},

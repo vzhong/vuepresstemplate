@@ -1,9 +1,11 @@
 <template lang='pug'>
   article.message
     .message-header
-      span.is-pulled-left Example {{index}}
+      span.is-pulled-left Example {{ex.id}}
       span.is-pulled-right #[a(:href='ex.source_url') View URL]
-    .message-body
+    .message-body(v-if='ex')
+      b-field(label='Annotation')
+        b-taginput(v-model='ex.tags', :data='filteredTags', autocomplete, :allow-new='true', @typing='getFilteredTags', type='is-dark')
       .columns
         .column
           p Utterance ID:
@@ -44,9 +46,10 @@
 
 <script>
 export default {
-  props: ['index', 'ex'],
+  props: ['ex', 'allTags'],
   data() {
     return {
+      filteredTags: this.allTags,
     }
   },
   mounted() {
@@ -76,6 +79,9 @@ export default {
     }
   },
   methods: {
+    getFilteredTags(text) {
+      this.filteredTags = this.allTags.filter(tag => {return tag.toLowerCase().indexOf(text.toLowerCase()) >= 0})
+    }
   }
 }
 </script>

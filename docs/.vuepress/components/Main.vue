@@ -2,8 +2,9 @@
   .main
     section.hero
       .hero-body
-        .container
-          h1.title ShARC Analysis
+        section.section
+          h1 ShARC Analysis
+        section.section
           Viewer
     section.footer
       .container
@@ -17,22 +18,14 @@ export default {
     }
   },
   mounted() {
-    var o = this
-    fetch('analysis.json')
-      .then(response => response.json())
-      .then(json => o.$store.commit('SET_DATA', json));
   },
   watch: {
   },
   computed: {
     raw() {
-      return this.$store.getters.getData
     }
   },
   methods: {
-    validate() {
-      console.log(this.raw)
-    }
   }
 }
 </script>

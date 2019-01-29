@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 
@@ -11,30 +10,4 @@ export default ({
   siteData // site metadata
 }) => {
   Vue.use(Buefy)
-  Vue.use(Vuex)
-
-  const store = new Vuex.Store({
-    state: {
-      data: []
-    },
-    getters: {
-      getData(state) {
-        return state.data
-      },
-    },
-    mutations: {
-      SET_DATA(state, payload) {
-        state.data = payload
-      },
-      LOAD_DATA_DEBUG(state) {
-        state.data = {
-          key1: {subkey1: 'subvalue1', subkey2: 'subvalue2'},
-          key2: {subkey3: 'subvalue3', subkey4: 'subvalue4'},
-          key3: {subkey1: 'subvalue1', subkey3: 'subvalue3'},
-        }
-      }
-    },
-  })
-
-  options.store = store
 }
