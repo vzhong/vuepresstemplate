@@ -5,18 +5,18 @@
       .columns
         .column
           p #[span.tag.is-dark Annotated]
-        .column.is-three-quarters
-          progress.progress(:value='annotated.length', :max='data.length') {{annotated.length}} / {{data.length}}
         .column
           p {{annotated.length}} / {{data.length}}
+        .column.is-three-quarters
+          progress.progress(:value='annotated.length', :max='data.length') {{annotated.length}} / {{data.length}}
     .block(v-for='t in tags')
       .columns
         .column
           p #[span.tag.is-dark {{t}}]
-        .column.is-three-quarters
-          progress.progress(:value='groupByTag[t].length', :max='annotated.length') {{groupByTag[t].length}} / {{annotated.length}}
         .column
           p {{groupByTag[t].length}} / {{annotated.length}}
+        .column.is-three-quarters
+          progress.progress(:value='groupByTag[t].length', :max='annotated.length') {{groupByTag[t].length}} / {{annotated.length}}
 </template>
 
 
